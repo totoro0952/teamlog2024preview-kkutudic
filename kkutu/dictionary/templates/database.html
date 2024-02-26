@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 저장</title>
+    <link rel="stylesheet" href="{% static 'database.css' %}">
+</head>
+<body>
+    <h1>단어 저장</h1>
+    <p><strong><i>1 : 긴 단어(한국어)(꽤 걸림)</i></strong></p>
+    <p><strong><i>2 : 공격 단어(한국어)(조금 걸림)</i></strong></p>
+    <p><strong><i>3 : 방어 단어(조금 걸림)</i></strong></p>
+    <p><strong><i>4 : 긴 단어(영어)(오래 걸림)</i></strong></p>
+    <p><strong><i>5 : 일반 단어(한국어)(매우 매우 오래 걸림)</i></strong></p>
+    <p><strong><i>6 : 일반 단어(영어)(매우 매우 오래 걸림)</i></strong></p>
+    <p><strong><i>7 : 쿵쿵따(오래 걸림)</i></strong></p>
+    <p><strong><i>8 : 단어대결(꽤 오래 걸림)</i></strong></p>
+    <p>조금 걸림 >> 꽤 걸림 >> 오래 걸림 >> 꽤 오래 걸림 >> 매우 오래 걸림 >> 매우매우 오래 걸림</p>
+    <form method="post">
+        {% csrf_token %}
+        <input name="category">
+        <button>선택</button> 
+        <a href="{% url 'main' %}"><button type="button">돌아가기</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+h1 {
+    color: #ff0000; /* 빨간색으로 강조 */
+    margin-top: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #777; /* 회색 배경으로 비활성화 표시 */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #999; /* 호버 상태에서도 색상 유지 */
+}

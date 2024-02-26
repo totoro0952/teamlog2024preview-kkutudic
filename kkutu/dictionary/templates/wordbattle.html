@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어대결</title>
+    <link rel="stylesheet" href="{% static 'wordbattle.css' %}">
+</head>
+<body>
+    <h1>단어대결</h1>
+    <select onchange="window.open(value, '_self');">
+        <option value="{% url 'backletter' %}">끝말잇기</option>
+        <option value="{% url 'frontletter' %}">앞말잇기</option>
+        <option value="{% url 'attack' %}">공격단어</option>
+        <option value="{% url 'onetime' %}" >한방단어</option>
+        <option value="{% url 'threeletter' %}">쿵쿵따</option>
+        <option value="{% url 'wordbattle' %}" selected>단어대결</option>
+    </select>
+    <form method="post" name="searchForm">
+        {% csrf_token %}
+        <div id="search">
+            <input name="first" placeholder="{{ placeholders.0 }}">
+            <input name="mission" placeholder="{{ placeholders.1 }}" autofocus>
+            <input name="length" placeholder="{{ placeholders.2 }}">
+            <input name="category" placeholder="{{ placeholders.3 }}" list="categories" value="{{ value.0 }}">
+            <datalist id="categories">
+                {% for i in categories %}
+                <option value="{{ i }}"></option>
+                {% endfor %}
+            </datalist>
+            <button>Search</button>
+            <a href="{% url 'main' %}"><button type="button">돌아가기</button></a>
+        </div>
+    </form>
+    <hr>
+    <div id="words">
+        {% for i in words %}
+        <p>{{i.word}}</p>
+        {% if i.misnum != 0 %}
+        <p>미션 개수 : {{i.misnum}}개</p>
+        {% else %}
+        <p>단어 길이 : {{i.leng}}자</p>
+        {% endif %}
+        <hr>
+        {% endfor %}
+    </div>
+</body>
+</html>
